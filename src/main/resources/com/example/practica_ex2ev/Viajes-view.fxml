@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practica_ex2ev.ViajesController">
+   <bottom>
+      <GridPane prefHeight="76.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="limpiarEstilobtn" mnemonicParsing="false" onAction="#onLimpiarEstiloClick" text="Limpiar Estilo" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="30.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="asignarEstilobtn" mnemonicParsing="false" onAction="#onAsignarEstiloClick" text="Asignar Estilo" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </bottom>
+   <left>
+      <ListView fx:id="ciudadesListView" prefHeight="324.0" prefWidth="129.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
