@@ -13,7 +13,7 @@ public class ViajesController {
     private Button asignarEstilobtn;
 
     @FXML
-    private ListView<String> ciudadesListView;
+    private ListView<Ciudad> ciudadesListView;
 
     @FXML
     private Button limpiarEstilobtn;
@@ -25,22 +25,31 @@ public class ViajesController {
     private Pane panelImagenes;
 
 
-    Ciudad madrid = new Ciudad();
-    Ciudad barcelona = new Ciudad();
-    Ciudad sanFrancisco = new Ciudad();
+    Ciudad venecia = new Ciudad("Venecia", "images/venecia.jpg");
+    Ciudad barcelona = new Ciudad("Barcelona", "images/barcelona.jpg");
+    Ciudad sanFrancisco = new Ciudad("San Francisco", "images/sanFrancisco.jpg");
 
     @FXML
     public void initialize(){
-        madrid.setNombre("Madrid");
-        barcelona.setNombre("Barcelona");
-        sanFrancisco.setNombre("San Francisco");
+
+        ciudadesListView.getItems().addAll( venecia, barcelona, sanFrancisco);
+        //secuenciaImagenesInfantil.addImage(getClass().getResource("images/infantil/01.jpg").toExternalForm());
+        ciudadesListView.setOnMouseClicked(event -> {
+            Ciudad selectedCiudad = ciudadesListView.getSelectionModel().getSelectedItem();
+            if (selectedCiudad != null){
+                String imagenUrl = selectedCiudad.getUrl();
 
 
-        ciudadesListView.getItems().addAll(madrid.toString(), barcelona.toString(), sanFrancisco.toString());
+
+            }
+
+
+        });
     }
 
     @FXML
     protected void onLimpiarEstiloClick() {}
+
 
     @FXML
     protected void onAsignarEstiloClick() {}

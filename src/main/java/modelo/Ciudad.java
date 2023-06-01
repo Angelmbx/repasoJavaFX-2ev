@@ -7,6 +7,10 @@ private String url;
 // secuenciaImagenesInfantil.addImage(getClass().getResource("images/infantil/01.jpg").toExternalForm());
 
 
+    public Ciudad(String nombre, String url) {
+        this.nombre = nombre;
+        this.url = url;
+    }
 
     public String getNombre() {
         return nombre;
