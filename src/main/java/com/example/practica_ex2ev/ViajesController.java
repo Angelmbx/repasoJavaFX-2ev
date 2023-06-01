@@ -25,15 +25,17 @@ public class ViajesController {
 
 
     //instancias de la clase ciudad
-    Ciudad venecia = new Ciudad("Venecia", "/Users/angel/IdeaProjects/practica_ex2ev/src/main/resources/imagenes/venecia.jpg");
+    Ciudad venecia = new Ciudad("Venecia", "file:resources/imagenes/venecia.jpg");
     Ciudad barcelona = new Ciudad("Barcelona", "resources/imagenes/barcelona.jpg");
     Ciudad sanFrancisco = new Ciudad("San Francisco", "resources/imagenes/sanFrancisco.jpg");
 
+
+
     @FXML
     public void initialize(){
+        imageView = new ImageView();
 
         ciudadesListView.getItems().addAll( venecia, barcelona, sanFrancisco);
-        //secuenciaImagenesInfantil.addImage(getClass().getResource("images/infantil/01.jpg").toExternalForm());
         ciudadesListView.setOnMouseClicked(event -> {
             Ciudad selectedCiudad = ciudadesListView.getSelectionModel().getSelectedItem();
             if (selectedCiudad != null){
@@ -43,6 +45,8 @@ public class ViajesController {
             }
         });
     }
+
+    //secuenciaImagenesInfantil.addImage(getClass().getResource("images/infantil/01.jpg").toExternalForm());
 
     @FXML
     protected void onLimpiarEstiloClick() {}
