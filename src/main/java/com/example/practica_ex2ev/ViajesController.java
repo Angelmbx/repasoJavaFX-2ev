@@ -1,5 +1,9 @@
 package com.example.practica_ex2ev;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -9,44 +13,57 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import modelo.Ciudad;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class ViajesController {
 
-    @FXML
-    private Button asignarEstilobtn;
+
 
     @FXML
     private ListView<Ciudad> ciudadesListView;
 
     @FXML
-    private Button limpiarEstilobtn;
+    private final ObservableList<Ciudad> listaCiudades =
+            FXCollections.observableArrayList();
 
     @FXML
     private ImageView imageView;
+    @FXML
+    private Button asignarEstilobtn;
+    @FXML
+    private Button limpiarEstilobtn;
 
-
-    //instancias de la clase ciudad
-    Ciudad venecia = new Ciudad("Venecia", "file:resources/imagenes/venecia.jpg");
-    Ciudad barcelona = new Ciudad("Barcelona", "resources/imagenes/barcelona.jpg");
-    Ciudad sanFrancisco = new Ciudad("San Francisco", "resources/imagenes/sanFrancisco.jpg");
 
 
 
     @FXML
     public void initialize(){
-        imageView = new ImageView();
+      //  imageView = new ImageView();
 
-        ciudadesListView.getItems().addAll( venecia, barcelona, sanFrancisco);
-        ciudadesListView.setOnMouseClicked(event -> {
-            Ciudad selectedCiudad = ciudadesListView.getSelectionModel().getSelectedItem();
-            if (selectedCiudad != null){
-                String imagenUrl = selectedCiudad.getUrl();
-                Image image = new Image(imagenUrl);
-                imageView.setImage(image);
-            }
-        });
+        listaCiudades.add(new Ciudad("Venecia", "C:\\Users\\a21angelmb\\IdeaProjects\\repasoJavaFX-2ev\\src\\main\\resources\\imagenes\\venecia.jpg"));
+        listaCiudades.add(new Ciudad("Las Vegas", "C:\\Users\\a21angelmb\\IdeaProjects\\repasoJavaFX-2ev\\src\\main\\resources\\imagenes\\LasVegas.jpg"));
+        listaCiudades.add(new Ciudad("Bali", "C:\\Users\\a21angelmb\\IdeaProjects\\repasoJavaFX-2ev\\src\\main\\resources\\imagenes\\bali.jpg"));
+
+
+
+        ciudadesListView.setItems(listaCiudades);
+
+        //Debes modificar el ListView para que funcione con la clase Ciudad.
+        ciudadesListView
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener(new ChangeListener<Ciudad>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Ciudad> observableValue, Ciudad oldCiudad, Ciudad newCiudad) {
+                        Image imagen=new Image(newCiudad.getUrl ());
+                        imageView.setImage (imagen);
+                    }
+
+                }) ;
+
     }
 
-    //secuenciaImagenesInfantil.addImage(getClass().getResource("images/infantil/01.jpg").toExternalForm());
 
     @FXML
     protected void onLimpiarEstiloClick() {}
