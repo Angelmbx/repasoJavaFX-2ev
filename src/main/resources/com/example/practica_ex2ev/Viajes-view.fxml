@@ -33,4 +33,7 @@
    <center>
       <ImageView fx:id="imageView" fitHeight="323.0" fitWidth="472.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
    </center>
+   <top>
+      <Label fx:id="titulo" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="338.0" text="Imagen de la ciudad" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>
